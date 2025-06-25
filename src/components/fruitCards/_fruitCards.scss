@@ -1,0 +1,28 @@
+.fruit-cards-section{
+  display: flex;
+  // justify-content: flex-end;
+  // justify-content: center;
+  // justify-content: space-around;
+  margin-top: 32px;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-left: 19%;
+}
+
+.fruit-cards-btn-more{
+  background-color: $secondary-color;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 700;
+  height: 4.7rem;
+  margin: 2.4rem 0 2.4rem 20%;
+  padding: 1.3rem 3.2rem;
+  width: 15rem;
+
+  &:hover{
+    background-color: $secondary-color-light;
+  }
+}

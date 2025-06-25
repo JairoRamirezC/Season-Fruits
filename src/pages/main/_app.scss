@@ -1,0 +1,39 @@
+.fruits-app{
+  margin: 0 auto;
+  max-width: 1640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  &__header{
+
+    h1{
+      font-size: 5rem;
+      margin-top: 8.2rem;
+    }
+
+    p{
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      color: $primary-color;
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__main{
+    // border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    gap: 3.2rem;
+
+    &__filtersAndCards {
+      // border: 1px solid blue;
+      // width: 80%;
+    }
+
+    &__general-information{
+      // width: 20%;
+    }
+  }
+}

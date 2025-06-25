@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  font-family: "Lato", sans-serif;
+}
+
+
+// var colors
+$primary-color: #d4af37;    // Dorado usado en los títulos como "Nutritional properties..."
+$secondary-color: #000000;  // Negro principal del texto y títulos
+$secondary-color-light: #3a3a3a;  // Negro principal del texto y títulos
+$background-color: #f9f9f9; // Fondo claro del panel de "General information"
+$background-color-gray: #dfdfdf;
+$card-background: #ffffff;  // Fondo blanco de las tarjetas de frutas
+$text-secondary: #b3b3b3;
+
+// pages
+@import '../../pages/main/app';
+
+// components
+@import '../../components/filters/filtersSection';
+@import '../../components/fruitCards/fruitCards';
+@import '../../components/fruitCards/cards/cards';
+@import '../../components/generalInformation/generalInformation';

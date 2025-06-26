@@ -1,6 +1,20 @@
+export type FilterStore = {
+  totalCards: number;
+  filterType: string;
+  isAscending: boolean;
+  allFruits: FruitData[];
+  fruits: FruitData[];
+  fruitsOrder: FruitData[];
+  setFilterType: (value: string) => void;
+  setSearchTerm: (value: string) => void;
+  toggleOrder: (order:boolean) => void;
+  showMoreButton: () => void;
+};
+
 export interface FruitData {
-  name: string;
   id: number;
+  name: string;
+  imageUrl: string;
   family: string;
   order: string;
   genus: string;

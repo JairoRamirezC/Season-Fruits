@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { ChangeEvent, JSX } from 'react';
 import searchIcon from '../../assets/fruits/icon/search-icon.png';
 import { useFilterStore } from '../../common/store/useFilterStore';
@@ -7,24 +7,28 @@ export const FiltersSection = (): JSX.Element => {
   const [selectValue, setSelectValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const [isAscending, setIsAscending] = useState<boolean>(true);
-  const { setFilterType } = useFilterStore();
+  const { filterType, setFilterType, setSearchTerm, toggleOrder } = useFilterStore();
 
   const handleFilterChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event?.target;
-    setSelectValue(value);
+    setSelectValue(filterType ? value : '');
     setFilterType(value);
   }
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event?.target;
     setInputValue(value);
+    setSearchTerm(value);
   }
 
   const handleOrderClick = () => {
     setIsAscending(prev => !prev);
-    // Aquí podrías disparar una ordenación, por ejemplo:
-    // ordenarDatos(isAscending ? 'desc' : 'asc')
   }
+  
+  useEffect(() => {
+    toggleOrder(isAscending);
+  }, [isAscending]);
+  
 
   return (
     <section className='filters-section'>

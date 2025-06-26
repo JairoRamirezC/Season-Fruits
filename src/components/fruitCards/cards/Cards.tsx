@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Lychee from '../../../assets/fruits/images/Lychee.jpg';
+// import Lychee from '../../../assets/fruits/images/Lychee.avif';
 import type { CardsProps } from '../../../common/utils/types';
 
 export const Cards = ({data}: CardsProps) => {
   const [liked, setLiked] = useState<boolean>(false);
-  const {name, family, order, genus, nutritions} = data;
+  const {name, imageUrl, family, order, genus, nutritions} = data;
 
   const handleClickLike = () => {
     setLiked(!liked);
@@ -13,7 +13,8 @@ export const Cards = ({data}: CardsProps) => {
 
   return (
     <div className='card-info-section'>
-      <img src={Lychee} alt='img-fruit' />
+      {/* <img src={Lychee} alt='img-fruit' /> */}
+      <img src={imageUrl} alt={`img-fruit-${name}`} />
       <div className='card-info-section__body-card'>
         <p>{name}</p>
         <div className='card-info-section__body-card__category'>

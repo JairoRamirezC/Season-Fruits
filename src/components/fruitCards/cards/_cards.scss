@@ -1,67 +1,5 @@
-.card-info-section {
-  border-radius: 10px;
-  box-shadow: 1px 1px 10px 5px $background-color-gray;
-  display: flex;
-  flex-direction: column;
-  height: 563px;
+.card-info-container {
   position: relative;
-  width: 317px;
-
-  img {
-    border-radius: 10px 10px 0 0;
-    height: 235px;
-    object-fit: cover;
-  }
-
-  &__body-card {
-    padding: 24px;
-
-    & > p:first-child {
-      color: $primary-color;
-      font-size: 2.4rem;
-      font-weight: 700;
-      text-align: left;
-    }
-
-    & > p:nth-of-type(2) {
-      color: $primary-color;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin: 8px 0;
-      text-align: left;
-    }
-
-    &__category {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 1rem;
-
-      .category-item {
-        align-items: flex-start;
-        display: flex;
-        flex-direction: column;
-        font-size: 1.6rem;
-
-        .label {
-          font-weight: bold;
-          margin-bottom: 8px;
-        }
-      }
-    }
-
-    &__nutritions {
-      align-items: center;
-      display: flex;
-      font-size: 1.6rem;
-      justify-content: space-between;
-      margin: 10px 0;
-
-      &--title {
-        font-weight: 700;
-      }
-    }
-  }
 
   .likeButton {
     background: none;
@@ -75,6 +13,7 @@
     top: 1.4rem;
     transition: all 0.3s ease;
     width: fit-content;
+    z-index: 2;
 
     .heartContainer {
       align-items: center;
@@ -85,7 +24,7 @@
       justify-content: center;
       transition: all 0.3s ease;
       width: 40px;
-      
+
       .heart {
         fill: white;
         height: 24px;
@@ -101,5 +40,78 @@
 
   .liked .heart {
     fill: white;
+  }
+
+  .card-info-section {
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 1px $background-color-gray;
+    display: flex;
+    flex-direction: column;
+    height: 563px;
+    position: relative;
+    transition: 0.5s;
+    width: 317px;
+
+    &:hover {
+      box-shadow: 1px 1px 10px 10px $background-color-gray;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    img {
+      border-radius: 10px 10px 0 0;
+      height: 235px;
+      object-fit: cover;
+    }
+
+    &__body-card {
+      padding: 24px;
+
+      & > p:first-child {
+        color: $primary-color;
+        font-size: 2.4rem;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      & > p:nth-of-type(2) {
+        color: $primary-color;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 8px 0;
+        text-align: left;
+      }
+
+      &__category {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 1rem;
+
+        .category-item {
+          align-items: flex-start;
+          display: flex;
+          flex-direction: column;
+          font-size: 1.6rem;
+
+          .label {
+            font-weight: bold;
+            margin-bottom: 8px;
+          }
+        }
+      }
+
+      &__nutritions {
+        align-items: center;
+        display: flex;
+        font-size: 1.6rem;
+        justify-content: space-between;
+        margin: 10px 0;
+
+        &--title {
+          font-weight: 700;
+        }
+      }
+    }
   }
 }

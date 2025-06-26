@@ -73,9 +73,6 @@ export const useFilterStore = create<FilterStore>((set, get) => {
           return { 
             fruitsOrder: [], 
             filterType: "",
-            // fruits: state.isAscending 
-            //   ? baseData.sort((a, b) => a.name.localeCompare(b.name))
-            //   : baseData.sort((a, b) => b.name.localeCompare(a.name))
             fruits: state.originalOrderFruits.length > 0 
               ? state.originalOrderFruits.slice(0, state.totalCards)
               : baseData
@@ -161,7 +158,7 @@ export const useFilterStore = create<FilterStore>((set, get) => {
     
     showMoreButton: () => {
       set((state) => {
-        const newIndex = (state.totalCards += 4);
+        const newIndex = state.totalCards += 4;
         const newData = state.allFruits.slice(0, newIndex);
         let newValueToShow = [...newData];
 
@@ -179,7 +176,7 @@ export const useFilterStore = create<FilterStore>((set, get) => {
           return {
             totalCards: newIndex,
             fruitsOrder: newValueToShow,
-            fruits: newData
+            // fruits: newData
           }
         }
 

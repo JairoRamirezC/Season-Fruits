@@ -15,7 +15,8 @@ export const FiltersSection = (): JSX.Element => {
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event?.target;
-    setSearchTerm(value);
+    const validateInput = /^[a-zA-Z\s]*$/;
+    if(validateInput.test(value)) setSearchTerm(value);
   }
 
   const handleOrderClick = () => {

@@ -28,7 +28,8 @@ $card-background: #ffffff;
 $text-secondary: #b3b3b3;
 
 // pages
-@import '../../pages/main/app';
+@import '../../pages/fruits/fruitPage';
+@import '../../pages/detailsFruit/detailsFruit';
 
 // components
 @import '../../components/filters/filtersSection';

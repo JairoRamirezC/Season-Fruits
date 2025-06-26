@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFilterStore } from "../../common/store/useFilterStore";
-
-const formatValue = (number: number) => {
-  return Number(number.toFixed(2));
-}
+import { formatValue } from "../../common/utils/helpers/Helpers";
 
 export const GeneralInformation = () => {
   const { filterType, fruits, fruitsOrder } = useFilterStore();

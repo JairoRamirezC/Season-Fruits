@@ -1,63 +1,66 @@
 import type { CardsProps } from '../../../common/utils/types';
 import { useFilterStore } from '../../../common/store/useFilterStore';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Cards = ({data}: CardsProps) => {
-  const {id, name, imageUrl, family, order, genus, nutritions, isFavorite} = data;
+  const {id, name, imageUrl, family, order, genus, nutritions} = data;
   const { toggleFavorite, isFavoriteFunction } = useFilterStore();
   const favorite = isFavoriteFunction(id);
+  const navigate = useNavigate();
 
   const handleClickLike = () => {
     toggleFavorite(id);
   };
 
   return (
-    <div className='card-info-section'>
-      <img src={imageUrl} alt={`img-fruit-${name}`} />
-      <div className='card-info-section__body-card'>
-        <p>{name}</p>
-        <div className='card-info-section__body-card__category'>
-          <div className='category-item'>
-            <p className='label'>Family:</p>
-            <p className='value'>{family}</p>
+    <div className='card-info-container'>
+      <div className='card-info-section' onClick={() => navigate(`/fruit/${id}`)}>
+        <img src={imageUrl} alt={`img-fruit-${name}`} />
+        <div className='card-info-section__body-card'>
+          <p>{name}</p>
+          <div className='card-info-section__body-card__category'>
+            <div className='category-item'>
+              <p className='label'>Family:</p>
+              <p className='value'>{family}</p>
+            </div>
+            <div className='category-item'>
+              <p className='label'>Order:</p>
+              <p className='value'>{order}</p>
+            </div>
+            <div className='category-item'>
+              <p className='label'>Genus:</p>
+              <p className='value'>{genus}</p>
+            </div>
           </div>
-          <div className='category-item'>
-            <p className='label'>Order:</p>
-            <p className='value'>{order}</p>
+          <p>Nutritions</p>
+          <div className='card-info-section__body-card__nutritions'>
+            <p className='card-info-section__body-card__nutritions--title'>
+              Calories
+            </p>
+            <p>{nutritions?.calories}</p>
           </div>
-          <div className='category-item'>
-            <p className='label'>Genus:</p>
-            <p className='value'>{genus}</p>
+          <div className='card-info-section__body-card__nutritions'>
+            <p className='card-info-section__body-card__nutritions--title'>Fat</p>
+            <p>{nutritions?.fat}</p>
           </div>
-        </div>
-        <p>Nutritions</p>
-        <div className='card-info-section__body-card__nutritions'>
-          <p className='card-info-section__body-card__nutritions--title'>
-            Calories
-          </p>
-          <p>{nutritions?.calories}</p>
-        </div>
-        <div className='card-info-section__body-card__nutritions'>
-          <p className='card-info-section__body-card__nutritions--title'>Fat</p>
-          <p>{nutritions?.fat}</p>
-        </div>
-        <div className='card-info-section__body-card__nutritions'>
-          <p className='card-info-section__body-card__nutritions--title'>
-            Sugar
-          </p>
-          <p>{nutritions?.sugar}</p>
-        </div>
-        <div className='card-info-section__body-card__nutritions'>
-          <p className='card-info-section__body-card__nutritions--title'>
-            Carbohydrates
-          </p>
-          <p>{nutritions?.carbohydrates}</p>
-        </div>
-        <div className='card-info-section__body-card__nutritions'>
-          <p className='card-info-section__body-card__nutritions--title'>
-            Protein
-          </p>
-          <p>{nutritions?.protein}</p>
+          <div className='card-info-section__body-card__nutritions'>
+            <p className='card-info-section__body-card__nutritions--title'>
+              Sugar
+            </p>
+            <p>{nutritions?.sugar}</p>
+          </div>
+          <div className='card-info-section__body-card__nutritions'>
+            <p className='card-info-section__body-card__nutritions--title'>
+              Carbohydrates
+            </p>
+            <p>{nutritions?.carbohydrates}</p>
+          </div>
+          <div className='card-info-section__body-card__nutritions'>
+            <p className='card-info-section__body-card__nutritions--title'>
+              Protein
+            </p>
+            <p>{nutritions?.protein}</p>
+          </div>
         </div>
       </div>
       <button

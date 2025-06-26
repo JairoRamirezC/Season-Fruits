@@ -6,6 +6,7 @@ npx eslint --init
 npm i sass (v.^1.89.2)
 npm i -E axios (v1.10.0)
 npm install -E zustand (v.5.0.5)
+npm i react-router-dom
 
 
 

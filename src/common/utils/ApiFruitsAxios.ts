@@ -20,8 +20,7 @@ const callEndpointGet = async(url:string) => {
 
 const ApiFruitsAxios = {
   getAllFruits() {
-    // const allFruits = callEndpointGet('fruit/all');
-    const allFruits = callEndpointGet('api/fruit/all');
+    const allFruits = callEndpointGet('fruit/all');
     return allFruits;
   }
 }

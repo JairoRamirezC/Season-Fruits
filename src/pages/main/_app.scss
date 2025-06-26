@@ -1,9 +1,9 @@
 .fruits-app{
-  margin: 0 auto;
-  max-width: 1640px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
+  max-width: 1640px;
   text-align: center;
 
   &__header{
@@ -14,26 +14,21 @@
     }
 
     p{
-      font-size: 2.4rem;
-      text-transform: uppercase;
       color: $primary-color;
+      font-size: 2.4rem;
       margin-bottom: 6rem;
+      text-transform: uppercase;
     }
   }
 
   &__main{
-    // border: 1px solid red;
     display: flex;
-    justify-content: center;
     gap: 3.2rem;
+    justify-content: center;
 
-    &__filtersAndCards {
-      // border: 1px solid blue;
-      // width: 80%;
-    }
-
-    &__general-information{
-      // width: 20%;
+    @media screen and (min-width: 320px) and (max-width: 800px) {
+      align-items: center;
+      flex-direction: column-reverse;
     }
   }
 }

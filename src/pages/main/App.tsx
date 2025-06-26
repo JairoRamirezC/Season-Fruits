@@ -1,7 +1,6 @@
 import { FiltersSection, FruitCards } from "../../components";
 import { GeneralInformation } from "../../components/generalInformation/GeneralInformation";
 
-
 function App() {
 
   return (

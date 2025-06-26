@@ -8,11 +8,11 @@ const formatValue = (number: number) => {
 export const GeneralInformation = () => {
   const { filterType, fruits, fruitsOrder } = useFilterStore();
   const fruitsToRender = !filterType ? fruits : fruitsOrder;
-  const [getTotalCalories, setGetTotalCalories] = useState(0);
-  const [getTotalFats, setGetTotalFats] = useState(0);
-  const [getTotalSugar, setGetTotalSugar] = useState(0);
-  const [getTotalCarbohydrates, setGetTotalCarbohydrates] = useState(0);
-  const [getTotalProteins, setGetTotalProteins] = useState(0);
+  const [getTotalCalories, setGetTotalCalories] = useState<number>(0);
+  const [getTotalFats, setGetTotalFats] = useState<number>(0);
+  const [getTotalSugar, setGetTotalSugar] = useState<number>(0);
+  const [getTotalCarbohydrates, setGetTotalCarbohydrates] = useState<number>(0);
+  const [getTotalProteins, setGetTotalProteins] = useState<number>(0);
 
   useEffect(() => {
     setGetTotalCalories(fruitsToRender.reduce((acum, fruit) => acum + fruit.nutritions.calories, 0));

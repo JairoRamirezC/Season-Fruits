@@ -1,36 +1,32 @@
-import { useState } from 'react';
-// import Lychee from '../../../assets/fruits/images/Lychee.avif';
 import type { CardsProps } from '../../../common/utils/types';
+import { useFilterStore } from '../../../common/store/useFilterStore';
+import { useState } from 'react';
 
 export const Cards = ({data}: CardsProps) => {
-  const [liked, setLiked] = useState<boolean>(false);
-  const {name, imageUrl, family, order, genus, nutritions} = data;
+  const {id, name, imageUrl, family, order, genus, nutritions, isFavorite} = data;
+  const { toggleFavorite, isFavoriteFunction } = useFilterStore();
+  const favorite = isFavoriteFunction(id);
 
   const handleClickLike = () => {
-    setLiked(!liked);
+    toggleFavorite(id);
   };
-  
 
   return (
     <div className='card-info-section'>
-      {/* <img src={Lychee} alt='img-fruit' /> */}
       <img src={imageUrl} alt={`img-fruit-${name}`} />
       <div className='card-info-section__body-card'>
         <p>{name}</p>
         <div className='card-info-section__body-card__category'>
           <div className='category-item'>
             <p className='label'>Family:</p>
-            {/* <p className='value'>Rosaceae</p> */}
             <p className='value'>{family}</p>
           </div>
           <div className='category-item'>
             <p className='label'>Order:</p>
-            {/* <p className='value'>Rosales</p> */}
             <p className='value'>{order}</p>
           </div>
           <div className='category-item'>
             <p className='label'>Genus:</p>
-            {/* <p className='value'>Malus</p> */}
             <p className='value'>{genus}</p>
           </div>
         </div>
@@ -39,40 +35,35 @@ export const Cards = ({data}: CardsProps) => {
           <p className='card-info-section__body-card__nutritions--title'>
             Calories
           </p>
-          {/* <p>52</p> */}
           <p>{nutritions?.calories}</p>
         </div>
         <div className='card-info-section__body-card__nutritions'>
           <p className='card-info-section__body-card__nutritions--title'>Fat</p>
-          {/* <p>0.4</p> */}
           <p>{nutritions?.fat}</p>
         </div>
         <div className='card-info-section__body-card__nutritions'>
           <p className='card-info-section__body-card__nutritions--title'>
             Sugar
           </p>
-          {/* <p>10.3</p> */}
           <p>{nutritions?.sugar}</p>
         </div>
         <div className='card-info-section__body-card__nutritions'>
           <p className='card-info-section__body-card__nutritions--title'>
             Carbohydrates
           </p>
-          {/* <p>11.4.3</p> */}
           <p>{nutritions?.carbohydrates}</p>
         </div>
         <div className='card-info-section__body-card__nutritions'>
           <p className='card-info-section__body-card__nutritions--title'>
             Protein
           </p>
-          {/* <p>0.4</p> */}
           <p>{nutritions?.protein}</p>
         </div>
       </div>
       <button
+        className={`likeButton ${favorite ? 'liked' : ''}`}
+        aria-label={favorite ? 'Quitar me gusta' : 'Dar me gusta'}
         onClick={handleClickLike}
-        className={`likeButton ${liked ? 'liked' : ''}`}
-        aria-label={liked ? 'Quitar me gusta' : 'Dar me gusta'}
       >
         <span className='heartContainer'>
           <svg className='heart' viewBox='0 0 24 24'>

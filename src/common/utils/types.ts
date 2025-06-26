@@ -3,12 +3,16 @@ export type FilterStore = {
   filterType: string;
   isAscending: boolean;
   allFruits: FruitData[];
+  originalOrderFruits: FruitData[];
   fruits: FruitData[];
   fruitsOrder: FruitData[];
+  favoriteFruits: number[];
   setFilterType: (value: string) => void;
   setSearchTerm: (value: string) => void;
   toggleOrder: (order:boolean) => void;
   showMoreButton: () => void;
+  toggleFavorite: (fruitId:number) => void;
+  isFavoriteFunction: (fruitId:number) => boolean;
 };
 
 export interface FruitData {
@@ -19,6 +23,7 @@ export interface FruitData {
   order: string;
   genus: string;
   nutritions: Nutritions;
+  isFavorite: boolean;
 }
 
 export interface Nutritions {

@@ -22,14 +22,20 @@ git clone git@github.com:JairoRamirezC/Season-Fruits.git
 cd Season-fruits
 npm install
 
-### SASS
-```npm install --save-dev node-sass``` Y/O ```npm install -D```
+### ESLINT
+```npx eslint --init```
 
-### React-Router-Dom
-```npm i react-router-dom```
+### SASS
+```npm install --save-dev node-sass``` Y/O ```npm install sass```
 
 ### Axios
 ```npm install axios```
+
+### Zustand
+```npm install -E zustand``` (v.5.0.5)
+
+### React-Router-Dom
+```npm i react-router-dom```
 
 ### Material UI
 ```npm install @mui/material @emotion/react @emotion/styled @mui/icons-material```

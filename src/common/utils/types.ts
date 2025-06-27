@@ -5,6 +5,7 @@ export type FilterStore = {
   allFruits: FruitData[];
   originalOrderFruits: FruitData[];
   fruits: FruitData[];
+  fruitsStateOriginal: FruitData[];
   fruitsOrder: FruitData[];
   favoriteFruits: number[];
   setFilterType: (value: string) => void;
@@ -12,7 +13,7 @@ export type FilterStore = {
   toggleOrder: (order:boolean) => void;
   showMoreButton: () => void;
   toggleFavorite: (fruitId:number) => void;
-  isFavoriteFunction: (fruitId:number) => boolean;
+  isFavoriteFunction: (fruitId: number) => boolean
 };
 
 export interface FruitData {

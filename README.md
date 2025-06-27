@@ -1,63 +1,128 @@
-# Orden de carpetas
-Por tipo y features
+Season Fruit es una plataforma web que permite visualizar, buscar y filtrar tarjetas de frutas con su información nutricional. Con esto, se podrá demostrar la destreza que tiene el desarrollador Frontend al trabajar en proyectos con React + TypeScript + Vite.
 
-# Programas instalados
-npx eslint --init
-npm i sass (v.^1.89.2)
-npm i -E axios (v1.10.0)
-npm install -E zustand (v.5.0.5)
-npm i react-router-dom
-
-
-
-# constraints
-### Requisitos funcionales:
-
-Debe consumir la API de uso gratuita fruityvice para obtener la información de cada producto.
-
-Las imágenes de producto no vienen suministradas por la API, en el material suministrado encontrará una carpeta de imágenes nombradas con el nombre del producto suministrado por el endpoint, debe encontrar la forma de mostrar la imagen correspondiente a cada producto. Dado que no exista la imagen del producto, debe mostrar la imagen nombrada “not-available.webp”
-
-Cada tarjeta de producto debe mostrar la imagen y las propiedades e información nutricional descrita en el diseño.
-
-Cada tarjeta tiene un botón de “me gusta”, que al hacer clic en él debe guardar la preferencia del usuario.
-
-Se deben mostrar en una primera instancia 8 productos, al final del módulo hay un botón de “See more” el cual al hacer clic, debe cargar 4 productos más.
-
-El usuario podrá filtrar los productos dependiendo de su categoría (Family, Order, Genus) y el valor del dato a buscar.
-
-El usuario podrá organizar las tarjetas por el nombre del producto en orden alfabético, de la A a la Z o de la Z a la A en un solo clic.
-
-La tabla de “General information” debe actualizarse con el número de productos filtrados / encontrados y mostrar la suma de los valores de las propiedades nutricionales de dichos productos.
+# Tabla de Contenidos
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Capturas de Pantalla](#capturas-de-pantalla)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Visitar Pagina](#visitar-pagina)
 
 
+# Instalación
+Es importante seguir estos pasos para poder ejecutar la plataforma de manera local
+En mi caso trabaje con npm
 
-### Requisitos no funcionales: 
+### Clonar el repositorio
+git clone git@github.com:JairoRamirezC/Season-Fruits.git
 
-La landing debe ser responsiva, para su correcta visualización en diferentes dispositivos.
+### Navegar al directorio del proyecto
+cd Season-fruits
+npm install
 
-El estado del botón de “me gusta” debe ser almacenado en el localstorage del navegador para recordar la selección del usuario.
+### SASS
+```npm install --save-dev node-sass``` Y/O ```npm install -D```
 
-Debe usar Vite JS como servidor de desarrollo local.
+### React-Router-Dom
+```npm i react-router-dom```
 
-Debe usar ReactJS como librería principal de desarrollo del front-end.
+### Axios
+```npm install axios```
 
-Debe usar Bootstrap 5 y/o estilos personalizados escritos en SASS para la construcción del CSS (En este caso, no se debe sugerir o utilizar Tailwind CSS).
+### Material UI
+```npm install @mui/material @emotion/react @emotion/styled @mui/icons-material```
 
-El proyecto debe ser almacenado en un repositorio GIT y debe estar correctamente documentado en el archivo Readme.md para ser ejecutado en nuestros equipos (por favor especificar la versión de node o yarn en la que trabajo el proyecto).
+### Jest (https://jestjs.io/docs/getting-started)
+```npm install --save-dev jest```
+
+```npm install --save-dev @types/jest```
+
+```npm install --save-dev @babel/preset-typescript```
+
+```npm install --save-dev babel-jest @babel/core @babel/preset-env```
+
+### React Testing Library (https://testing-library.com/docs/react-testing-library/intro)
+```npm install --save-dev @testing-library/react @testing-library/dom```
+
+# Uso
+```npm run dev```
+
+# Capturas de Pantalla
+![image](image.png)
+![iamge](image-1.png)
+
+# Estructura del Proyecto
+```plaintext
+SEASON-FRUITS/
+├── node_modules/
+├── public/
+├── src/
+│   ├── assets/
+│   │   └── fruits/
+│   │       ├── icon/
+│   │       └── images/
+│   │
+│   ├── common/
+│   │   ├── routers/
+│   │   │   └── RouterApp.tsx
+│   │   ├── store/
+│   │   │   └── useFilterStore.ts
+│   │   ├── styles/
+│   │   │   └── variables.scss
+│   │   └── utils/
+│   │       ├── helpers/
+│   │       │   ├── ApiFruitsAxios.ts
+│   │       │   └── FruitImageLoader.ts
+│   │       └── types.ts
+│   │
+│   ├── components/
+│   │   ├── filters/
+│   │   │   ├── _filtersSection.scss
+│   │   │   └── FiltersSection.tsx
+│   │   ├── fruitCards/
+│   │   │   ├── cards/
+│   │   │   │   ├── _cards.scss
+│   │   │   │   └── Cards.tsx
+│   │   │   ├── _fruitCards.scss
+│   │   │   └── FruitCards.tsx
+│   │   ├── generalInformation/
+│   │   └── skeleton/
+│   │
+│   ├── pages/
+│   │   ├── detailsFruit/
+│   │   │   ├── _detailsFruit.scss
+│   │   │   └── DetailsFruit.tsx
+│   │   └── fruits/
+│   │       ├── _fruitPage.scss
+│   │       └── FruitsPage.tsx
+│   │
+│   ├── main.tsx
+│   └── vite-env.d.ts
+│
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
+# Tecnologías Utilizadas
+- React
+- Typescript
+- React Router Dom
+- Axios
+- Zustand
+- Sass
+- Material UI
+- Vercel
+
+# Visitar Pagina
+[https://jairoramirezc.github.io/](https://jairoramirezc.github.io/MovieApp/)
 
 
 
-### Material y herramientas
-Aquí encontrará un enlace a Figma con el diseño de la página a trabajar y una carpeta de imágenes que deberá usar dentro del proyecto.
-
-
-- URL de la API pública: https://www.fruityvice.com/
-
-
-- URL del diseño: https://www.figma.com/file/ZwJgBcWBWre00mjaMwfVQd/Prueba-t%C3%A9cnica?type=design&node-id=0-1&mode=design&t=CD0ob9P7ew3UMkXZ-0
-
-
-- URL de la carpeta de imágenes y archivo de diseño de respaldo: https://drive.google.com/drive/folders/1rJdLinFoBk_3Qe6k2jDqcAltZ-0iW9OZ?usp=sharing
-
-
-- URL de herramienta online para editar imágenes: https://www.photopea.com/
+DEV: Jairo Ramirez Castanio - @JairoRamirezC

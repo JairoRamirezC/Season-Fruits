@@ -3,9 +3,8 @@ import { useFilterStore } from '../../../common/store/useFilterStore';
 import { useNavigate } from 'react-router-dom';
 
 export const Cards = ({data}: CardsProps) => {
-  const {id, name, imageUrl, family, order, genus, nutritions} = data;
-  const { toggleFavorite, isFavoriteFunction } = useFilterStore();
-  const favorite = isFavoriteFunction(id);
+  const {id, name, imageUrl, family, order, genus, nutritions, isFavorite} = data;
+  const { toggleFavorite } = useFilterStore();
   const navigate = useNavigate();
 
   const handleClickLike = () => {
@@ -64,8 +63,8 @@ export const Cards = ({data}: CardsProps) => {
         </div>
       </div>
       <button
-        className={`likeButton ${favorite ? 'liked' : ''}`}
-        aria-label={favorite ? 'Quitar me gusta' : 'Dar me gusta'}
+        className={`likeButton ${isFavorite ? 'liked' : ''}`}
+        aria-label={isFavorite ? 'Quitar me gusta' : 'Dar me gusta'}
         onClick={handleClickLike}
       >
         <span className='heartContainer'>

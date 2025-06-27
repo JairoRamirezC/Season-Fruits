@@ -5,6 +5,11 @@ import { getFruitImageLoader } from "../utils/FruitImageLoader";
 import notavailable from "../../assets/fruits/images/notavailable.avif";
 
 
+const loadFavorites = ():number[] => {
+  const favoriteListLocalStorage = localStorage.getItem('favoriteList');
+  return favoriteListLocalStorage ? JSON.parse(favoriteListLocalStorage) : [];
+}
+
 export const useFilterStore = create<FilterStore>((set, get) => {
   const getFruitsFromAPI = async () => {
     try {
@@ -26,32 +31,24 @@ export const useFilterStore = create<FilterStore>((set, get) => {
       console.log("Error getting fruits from API ", error);
     }
   };
-  getFruitsFromAPI();
 
-  const loadFavorites = ():number[] => {
-    const favoriteListLocalStorage = localStorage.getItem('favoriteList');
-    return favoriteListLocalStorage ? JSON.parse(favoriteListLocalStorage) : [];
-  }
+  getFruitsFromAPI();
 
   const showCardsControlled = () => {
     set((state) => {
       const isFavoriteLoaded = loadFavorites();
-      const favoriteFilled = state.allFruits.map(fruit => (
+      const fruitWithFavorite = state.allFruits.map(fruit => (
         isFavoriteLoaded.includes(fruit.id) 
         ? {...fruit, isFavorite: true} 
         : fruit
       ));
-
-      const originalOrder = state.originalOrderFruits.length > 0
-        ? state.originalOrderFruits
-        : favoriteFilled;
       
-        // const cardsByOrder = favoriteFilled.slice(0, state.totalCards);
-      const cardsByOrder = originalOrder.slice(0, state.totalCards);
+      const cardsByOrder = fruitWithFavorite.slice(0, state.totalCards);
       return {
         fruits: cardsByOrder,
-        favoriteFruits: isFavoriteLoaded,
-        originalOrderFruits: cardsByOrder
+        fruitsStateOriginal: cardsByOrder,
+        allFruits: fruitWithFavorite,
+        favoriteFruits: isFavoriteLoaded
       };
     });
   };
@@ -60,26 +57,23 @@ export const useFilterStore = create<FilterStore>((set, get) => {
     totalCards: 8,
     filterType: "",
     isAscending: true,
-    allFruits: [],
     originalOrderFruits: [],
-    fruits: [],
+    allFruits: [], // array total con el campo favoritos ajustado
+    fruits: [], // array cambiado por los filtros
+    fruitsStateOriginal: [], // array principal
     fruitsOrder: [],
     favoriteFruits: [],
 
     setFilterType: (value: string) => {
       set((state) => {
-        const baseData = state.allFruits.slice(0, state.totalCards);
+        let fruitsFilter;
         if (!value) {
           return { 
-            fruitsOrder: [], 
-            filterType: "",
-            fruits: state.originalOrderFruits.length > 0 
-              ? state.originalOrderFruits.slice(0, state.totalCards)
-              : baseData
+            filterType: '',
+            fruits: state.fruitsStateOriginal
           };
         }
 
-        let fruitsFilter = [...baseData];
         if (value === "family") {
           fruitsFilter = state.fruits?.toSorted((a, b) => a.family.toLowerCase().localeCompare(b.family.toLowerCase()));
         }
@@ -91,68 +85,37 @@ export const useFilterStore = create<FilterStore>((set, get) => {
         }
 
         return {
-          fruitsOrder: fruitsFilter,
           filterType: value,
-          fruits: baseData
+          fruits: fruitsFilter
         };
       });
     },
 
-    setSearchTerm: (value) => {
+    setSearchTerm: (value: string) => {
       set((state) => {
         const searchTerm = value?.trim().toLowerCase();
-        const baseData = state.allFruits.slice(0, state.totalCards);
 
         if(!searchTerm){
-          if (state.filterType){
-            let filteredData = [...baseData];
-            if (state.filterType === "family") {
-              filteredData = filteredData.toSorted((a, b) => a.family.toLowerCase().localeCompare(b.family.toLowerCase()));
-            } else if (state.filterType === "order") {
-              filteredData = filteredData.sort((a, b) => a.order.toLowerCase().localeCompare(b.order.toLowerCase()));
-            } else if (state.filterType === "genus") {
-              filteredData = filteredData.sort((a, b) => a.genus.toLowerCase().localeCompare(b.genus.toLowerCase()));
-            }
-
-            return {
-              fruitsOrder: filteredData
-            }
-          }
-
-          // const fruitDataSlice = state.allFruits.slice(0, state.totalCards);
           return {
-            fruits: state.originalOrderFruits.length > 0
-              ? state.originalOrderFruits.slice(0, state.totalCards)
-              : baseData
+            fruits: state.fruitsStateOriginal
           }
-        }
-
-        if (state.filterType) {
-          const getDataBySearchTerm = [...state.fruitsOrder]?.filter((fruit) => fruit?.name?.toLowerCase().includes(value.toLowerCase()));
-          return {
-            fruitsOrder: getDataBySearchTerm,
-          };
         }
         
-        const getDataBySearchTerm = baseData?.filter(fruit => fruit?.name?.toLowerCase().includes(value.toLowerCase()));
+        const getDataBySearchTerm = state.fruits?.filter(fruit => fruit?.name?.toLowerCase().includes(searchTerm?.toLowerCase()));
         return {
           fruits: getDataBySearchTerm,
         };
       });
     },
 
-    toggleOrder: (order:boolean) => set((state) => {
-      const baseData = state.filterType 
-        ? [...state.fruitsOrder] 
-        : state.originalOrderFruits.length > 0 ? [...state.originalOrderFruits] : [...state.fruits];
-      const fruitsSorted = baseData?.toSorted((a, b) => 
+    toggleOrder: (order: boolean) => set((state) => {
+      const fruitsSorted = state.fruits?.toSorted((a, b) => 
         order 
         ? a.name.toLowerCase().localeCompare(b.name.toLowerCase()) 
         : b.name.toLowerCase().localeCompare(a.name.toLowerCase()));
 
       return {
-        isAscending: order,
-        ...(state.filterType ? {fruitsOrder: fruitsSorted} : {fruits: fruitsSorted})
+        fruits: fruitsSorted
       }
     }),
     
@@ -160,39 +123,26 @@ export const useFilterStore = create<FilterStore>((set, get) => {
       set((state) => {
         const newIndex = state.totalCards += 4;
         const newData = state.allFruits.slice(0, newIndex);
-        let newValueToShow = [...newData];
-
-        if(state.filterType){
-          if (state.filterType === "family") {
-            newValueToShow?.toSorted((a, b) => a.family.toLowerCase().localeCompare(b.family.toLowerCase()));
-          }
-          if (state.filterType === "order") {
-            newValueToShow?.sort((a, b) => a.order.toLowerCase().localeCompare(b.order.toLowerCase()));
-          }
-          if (state.filterType === "genus") {
-            newValueToShow?.sort((a, b) => a.genus.toLowerCase().localeCompare(b.genus.toLowerCase()));
-          }
-
-          return {
-            totalCards: newIndex,
-            fruitsOrder: newValueToShow,
-            // fruits: newData
-          }
-        }
-
-        newValueToShow.sort((a, b) => state.isAscending 
-          ? a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-          : b.name.toLowerCase().localeCompare(a.name.toLowerCase()));
 
         return {
           totalCards: newIndex,
-          fruits: newValueToShow
+          fruits: newData,
+          fruitsStateOriginal: newData
         };
       });
     },
 
     toggleFavorite: (fruitId:number) => {
       set((state) => {
+        const cardUpdated = state.fruits.map(fruit => {
+          if(fruit.id === fruitId){
+            return {
+              ...fruit,
+              isFavorite: !fruit.isFavorite
+            }
+          }
+          return fruit;
+        });
         const isFavorited = state.favoriteFruits.includes(fruitId);
         const favoriteUpdated = isFavorited 
           ? state.favoriteFruits.filter(favorite => favorite !== fruitId)
@@ -200,6 +150,7 @@ export const useFilterStore = create<FilterStore>((set, get) => {
         
         localStorage.setItem('favoriteList', JSON.stringify(favoriteUpdated));
         return {
+          fruits: cardUpdated,
           favoriteFruits: favoriteUpdated
         }
       });

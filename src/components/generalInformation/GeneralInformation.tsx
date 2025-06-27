@@ -3,8 +3,7 @@ import { useFilterStore } from "../../common/store/useFilterStore";
 import { formatValue } from "../../common/utils/helpers/Helpers";
 
 export const GeneralInformation = () => {
-  const { filterType, fruits, fruitsOrder } = useFilterStore();
-  const fruitsToRender = !filterType ? fruits : fruitsOrder;
+  const { fruits } = useFilterStore();
   const [getTotalCalories, setGetTotalCalories] = useState<number>(0);
   const [getTotalFats, setGetTotalFats] = useState<number>(0);
   const [getTotalSugar, setGetTotalSugar] = useState<number>(0);
@@ -12,19 +11,19 @@ export const GeneralInformation = () => {
   const [getTotalProteins, setGetTotalProteins] = useState<number>(0);
 
   useEffect(() => {
-    setGetTotalCalories(fruitsToRender.reduce((acum, fruit) => acum + fruit.nutritions.calories, 0));
-    setGetTotalFats(fruitsToRender.reduce((acum, fruit) => acum + fruit.nutritions.fat, 0));
-    setGetTotalSugar(fruitsToRender.reduce((acum, fruit) => acum + fruit.nutritions.sugar, 0));
-    setGetTotalCarbohydrates(fruitsToRender.reduce((acum, fruit) => acum + fruit.nutritions.carbohydrates, 0));
-    setGetTotalProteins(fruitsToRender.reduce((acum, fruit) => acum + fruit.nutritions.protein, 0));
-  }, [fruitsToRender]);
+    setGetTotalCalories(fruits.reduce((acum, fruit) => acum + fruit.nutritions.calories, 0));
+    setGetTotalFats(fruits.reduce((acum, fruit) => acum + fruit.nutritions.fat, 0));
+    setGetTotalSugar(fruits.reduce((acum, fruit) => acum + fruit.nutritions.sugar, 0));
+    setGetTotalCarbohydrates(fruits.reduce((acum, fruit) => acum + fruit.nutritions.carbohydrates, 0));
+    setGetTotalProteins(fruits.reduce((acum, fruit) => acum + fruit.nutritions.protein, 0));
+  }, [fruits]);
 
   return (
     <div className='general-information-section'>
       <h2>General information</h2>
       <div className='general-information-section__products-found'>
         <p>No. Of Products Found:</p>
-        <p>{fruitsToRender.length}</p>
+        <p>{fruits.length}</p>
       </div>
       <p>Nutritional properties of products found</p>
       <div className='general-information-section__total-section'>

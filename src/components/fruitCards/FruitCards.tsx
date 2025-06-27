@@ -4,16 +4,14 @@ import type { FruitData } from "../../common/utils/types";
 import { SkeletonCard } from "../skeleton/SkeletonCard";
 
 export const FruitCards = () => {
-  const { fruits, fruitsOrder, showMoreButton } = useFilterStore();
-  const fruitsToRender = fruitsOrder.length === 0 ? fruits : fruitsOrder;
-  console.log('fruitsToRender >>> ', fruitsToRender);
+  const { fruits, showMoreButton } = useFilterStore();
 
   return (
     <div>
       <div className="fruit-cards-section">
         {
-          fruitsToRender.length > 0 ?
-          fruitsToRender?.map((fruit:FruitData) => (
+          fruits.length > 0 ?
+          fruits?.map((fruit:FruitData) => (
             <div key={fruit.id}>
               <Cards data={fruit} />
             </div>

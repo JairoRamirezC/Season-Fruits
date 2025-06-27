@@ -48,8 +48,8 @@ export const getFruitImageLoader = (fruitName: string): string => {
   const match = availableImages.find(name => name === normalized);
   
   if (match) {
-    return `/images/fruits/${match}.avif`;
+    return `../../../public/images/fruits/${match}.avif`;
   }
 
-  return '/images/fruits/notavailable.avif'; // ruta de imagen por defecto
+  return '../../../public/images/fruits/notavailable.avif'; // ruta de imagen por defecto
 };

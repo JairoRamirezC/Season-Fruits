@@ -117,7 +117,7 @@ SEASON-FRUITS/
 - Vercel
 
 # Visitar Pagina
-[Season Fruit Production](https://season-fruits-q6wumwb23-jairoramirezcs-projects.vercel.app/)
+[Season Fruit Production](https://season-fruits-7bqrt80og-jairoramirezcs-projects.vercel.app/)
 
 
 

@@ -1,5 +1,7 @@
 Season Fruit es una plataforma web que permite visualizar, buscar y filtrar tarjetas de frutas con su información nutricional. Con esto, se podrá demostrar la destreza que tiene el desarrollador Frontend al trabajar en proyectos con React + TypeScript + Vite.
 
+Prueba recibida (Martes 24, 10:47a.m)
+
 # Tabla de Contenidos
 - [Instalación](#instalación)
 - [Uso](#uso)

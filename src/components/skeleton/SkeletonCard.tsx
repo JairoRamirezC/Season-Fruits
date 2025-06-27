@@ -37,7 +37,7 @@ export const SkeletonCard = () => {
           <Skeleton animation="wave" width="40%" height={25} sx={{ mt: 2 }} />
           <Box mt={1} display="flex" flexDirection="column" gap={1}>
             {["Calories", "Fat", "Sugar", "Carbohydrates", "Protein"].map(
-              (label, i) => (
+              (_, i) => (
                 <Box
                   key={i}
                   display="flex"
@@ -86,7 +86,7 @@ export const SkeletonCard = () => {
           <Skeleton animation="wave" width="40%" height={25} sx={{ mt: 2 }} />
           <Box mt={1} display="flex" flexDirection="column" gap={1}>
             {["Calories", "Fat", "Sugar", "Carbohydrates", "Protein"].map(
-              (label, i) => (
+              (_, i) => (
                 <Box
                   key={i}
                   display="flex"

@@ -1,5 +1,7 @@
 Season Fruit es una plataforma web que permite visualizar, buscar y filtrar tarjetas de frutas con su información nutricional. Con esto, se podrá demostrar la destreza que tiene el desarrollador Frontend al trabajar en proyectos con React + TypeScript + Vite.
 
+Prueba recibida (Martes 24, 10:47a.m)
+
 # Tabla de Contenidos
 - [Instalación](#instalación)
 - [Uso](#uso)
@@ -20,29 +22,23 @@ git clone git@github.com:JairoRamirezC/Season-Fruits.git
 cd Season-fruits
 npm install
 
-### SASS
-```npm install --save-dev node-sass``` Y/O ```npm install -D```
+### ESLINT
+```npx eslint --init```
 
-### React-Router-Dom
-```npm i react-router-dom```
+### SASS
+```npm install --save-dev node-sass``` Y/O ```npm install sass```
 
 ### Axios
 ```npm install axios```
 
+### Zustand
+```npm install -E zustand``` (v.5.0.5)
+
+### React-Router-Dom
+```npm i react-router-dom```
+
 ### Material UI
 ```npm install @mui/material @emotion/react @emotion/styled @mui/icons-material```
-
-### Jest (https://jestjs.io/docs/getting-started)
-```npm install --save-dev jest```
-
-```npm install --save-dev @types/jest```
-
-```npm install --save-dev @babel/preset-typescript```
-
-```npm install --save-dev babel-jest @babel/core @babel/preset-env```
-
-### React Testing Library (https://testing-library.com/docs/react-testing-library/intro)
-```npm install --save-dev @testing-library/react @testing-library/dom```
 
 # Uso
 ```npm run dev```
@@ -121,7 +117,7 @@ SEASON-FRUITS/
 - Vercel
 
 # Visitar Pagina
-[https://jairoramirezc.github.io/](https://jairoramirezc.github.io/MovieApp/)
+[Season Fruit Production](https://season-fruits-q6wumwb23-jairoramirezcs-projects.vercel.app/)
 
 
 

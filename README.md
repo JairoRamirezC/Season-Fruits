@@ -32,18 +32,6 @@ npm install
 ### Material UI
 ```npm install @mui/material @emotion/react @emotion/styled @mui/icons-material```
 
-### Jest (https://jestjs.io/docs/getting-started)
-```npm install --save-dev jest```
-
-```npm install --save-dev @types/jest```
-
-```npm install --save-dev @babel/preset-typescript```
-
-```npm install --save-dev babel-jest @babel/core @babel/preset-env```
-
-### React Testing Library (https://testing-library.com/docs/react-testing-library/intro)
-```npm install --save-dev @testing-library/react @testing-library/dom```
-
 # Uso
 ```npm run dev```
 

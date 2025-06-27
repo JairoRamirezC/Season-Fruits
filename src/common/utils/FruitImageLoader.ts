@@ -1,8 +1,3 @@
-// const fruitImages = import.meta.glob('../../assets/fruits/images/*.avif', {
-//   eager: true,
-//   import: 'default',
-// });
-
 import Annona from '../../assets/fruits/images/Annona.avif';
 import Apple from '../../assets/fruits/images/Apple.avif';
 import Banana from '../../assets/fruits/images/Banana.avif';

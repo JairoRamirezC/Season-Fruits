@@ -17,7 +17,8 @@ export default defineConfig({
   },
   build: {
     outDir: "dist"
-  }
+  },
+  // base: 'https://JairoRamirezC.github.io/Season-Fruits'
   // resolve: {
   //   alias: {
   //     '@': path.resolve(__dirname, './src'),

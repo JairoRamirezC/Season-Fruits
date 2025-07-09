@@ -13,3 +13,4 @@ jobs:
         run: echo "Hola mundo..."
       - name: Listar directorio
         run: ls -l
+      - run: date

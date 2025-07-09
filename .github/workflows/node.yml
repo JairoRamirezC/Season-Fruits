@@ -43,6 +43,3 @@ jobs:
     steps:
       - name: Echo the message
         run: echo "Hola mundo..."
-
-      - name: listar directorio
-        run: ls -l

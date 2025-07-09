@@ -9,7 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
-      - name: Checkout to code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Listar main branch
         uses: ls -l

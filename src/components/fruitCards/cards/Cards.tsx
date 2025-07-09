@@ -1,8 +1,9 @@
+import React from 'react';
 import type { CardsProps } from '../../../common/utils/types';
 import { useFilterStore } from '../../../common/store/useFilterStore';
 import { useNavigate } from 'react-router-dom';
 
-export const Cards = ({data}: CardsProps) => {
+export const Cards = React.memo(({data}: CardsProps) => {
   const {id, name, imageUrl, family, order, genus, nutritions, isFavorite} = data;
   const { toggleFavorite } = useFilterStore();
   const navigate = useNavigate();
@@ -75,4 +76,4 @@ export const Cards = ({data}: CardsProps) => {
       </button>
     </div>
   );
-};
+});

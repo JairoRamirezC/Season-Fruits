@@ -10,7 +10,7 @@ const loadFavorites = ():number[] => {
   return favoriteListLocalStorage ? JSON.parse(favoriteListLocalStorage) : [];
 }
 
-export const useFilterStore = create<FilterStore>((set, get) => {
+export const useFilterStore = create<FilterStore>()((set, get) => {
   const getFruitsFromAPI = async () => {
     try {
       const { data } = await ApiFruitsAxios.getAllFruits();
@@ -55,9 +55,8 @@ export const useFilterStore = create<FilterStore>((set, get) => {
 
   return {
     totalCards: 8,
-    filterType: "",
+    filterType: '',
     isAscending: true,
-    originalOrderFruits: [],
     allFruits: [], // array total con el campo favoritos ajustado
     fruits: [], // array cambiado por los filtros
     fruitsStateOriginal: [], // array principal

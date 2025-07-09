@@ -3,11 +3,13 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import ArrowBack from "../../assets/fruits/icon/ArrowBack.svg";
 import { useFilterStore } from "../../common/store/useFilterStore";
 import { formatValue } from "../../common/utils/helpers/Helpers";
+import { useShallow } from "zustand/shallow";
 
 export const DetailsFruit = () => {
   const { id } = useParams<{id:string}>();
   const navigate = useNavigate();
-  const { allFruits, isFavoriteFunction } = useFilterStore();
+  const allFruits = useFilterStore(useShallow(state => state.allFruits));
+  const isFavoriteFunction = useFilterStore(state => state.isFavoriteFunction);
   const isFavorite = id ? isFavoriteFunction(Number(id)) : false;
   const fruitSelected = allFruits?.find(fruit => fruit.id.toString() === id);
 

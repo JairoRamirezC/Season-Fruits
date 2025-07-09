@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 export const Cards = ({data}: CardsProps) => {
   const {id, name, imageUrl, family, order, genus, nutritions, isFavorite} = data;
-  const { toggleFavorite } = useFilterStore();
+  // const { toggleFavorite } = useFilterStore();
+  const toggleFavorite = useFilterStore(state => state.toggleFavorite);
   const navigate = useNavigate();
 
   const handleClickLike = () => {

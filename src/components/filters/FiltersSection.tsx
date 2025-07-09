@@ -5,7 +5,10 @@ import { useFilterStore } from '../../common/store/useFilterStore';
 
 export const FiltersSection = (): JSX.Element => {
   const [isAscending, setIsAscending] = useState<boolean>(true);
-  const { filterType, setFilterType, setSearchTerm, toggleOrder } = useFilterStore();
+  const filterType = useFilterStore(state => state.filterType);
+  const setFilterType = useFilterStore(store => store.setFilterType);
+  const setSearchTerm = useFilterStore(state => state.setSearchTerm);
+  const toggleOrder = useFilterStore(state => state.toggleOrder);
 
   const handleFilterChange = (event: ChangeEvent<HTMLSelectElement>) => {
     // const { value } = event?.target;

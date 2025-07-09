@@ -3,7 +3,6 @@ export type FilterStore = {
   filterType: string;
   isAscending: boolean;
   allFruits: FruitData[];
-  originalOrderFruits: FruitData[];
   fruits: FruitData[];
   fruitsStateOriginal: FruitData[];
   fruitsOrder: FruitData[];

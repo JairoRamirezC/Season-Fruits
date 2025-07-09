@@ -2,9 +2,12 @@ import { Cards } from "./cards/Cards";
 import { useFilterStore } from "../../common/store/useFilterStore";
 import type { FruitData } from "../../common/utils/types";
 import { SkeletonCard } from "../skeleton/SkeletonCard";
+import { useShallow } from "zustand/shallow";
 
 export const FruitCards = () => {
-  const { fruits, showMoreButton } = useFilterStore();
+  const fruits = useFilterStore(useShallow(state => state.fruits));
+  const showMoreButton = useFilterStore(state => state.showMoreButton);
+  
 
   return (
     <div>

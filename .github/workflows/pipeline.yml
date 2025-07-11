@@ -27,5 +27,7 @@ jobs:
         run: npm install --no-audit --no-fund --no-optional
       - name: 7. Ejecutar Eslint
         run: npm run lint
-      - name: Crear Build
+      - name: 8. Crear Build
         run: npm run build
+      - name: 9. Correr test
+        run: npm run test

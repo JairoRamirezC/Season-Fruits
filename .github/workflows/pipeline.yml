@@ -13,3 +13,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Listar main branch
         run: ls -l
+      - name: Validar version de node
+        run: node --version
+      - name: Instalar node en servidor
+        uses: actions/setup-node@v4
+      - name: Validar version de node
+        run: node --version

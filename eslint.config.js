@@ -23,7 +23,8 @@ export default defineConfig([
       "@typescript-eslint/no-unused-vars": "warn",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
-      "react/display-name": "off"
+      "react/display-name": "off",
+      "no-unsafe-optional-chaining": "warn"
     },
     languageOptions: {
       globals: {

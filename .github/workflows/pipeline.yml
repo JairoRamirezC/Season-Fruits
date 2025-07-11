@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout to code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Listar main branch
         run: ls -l
       - name: Validar version de node
@@ -18,8 +20,10 @@ jobs:
       - name: Instalar node en servidor
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
       - name: Validar version de node
         run: node --version
+      - name: Instalar dependencias
+        run: npm install
       - name: Ejecutar Eslint
         run: npm run lint

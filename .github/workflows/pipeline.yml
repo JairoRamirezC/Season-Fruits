@@ -9,21 +9,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout to code
+      - name: 1. Checkout to code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Listar main branch
+      - name: 2. Listar main branch
         run: ls -l
-      - name: Validar version de node
+      - name: 3. Validar version de node
         run: node --version
-      - name: Instalar node en servidor
+      - name: 4. Instalar node en servidor
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - name: Validar version de node
+      - name: 5. Validar version de node
         run: node --version
-      - name: Instalar dependencias
-        run: npm install
-      - name: Ejecutar Eslint
+      - name: 6. Instalar dependencias
+        run: npm install --no-audit --no-fund --no-optional
+      - name: 7. Ejecutar Eslint
         run: npm run lint
+      - name: Crear Build
+        run: npm run build

@@ -26,8 +26,8 @@ jobs:
         run: node --version
       - name: 6. Instalar dependencias
         run:
-          rm -rf node_modules
-          rm -rf package-lock.json
+          # rm -rf node_modules
+          # rm -rf package-lock.json
           npm install --no-audit --no-fund --no-optional
       - name: 7. Ejecutar Eslint
         run: npm run lint
